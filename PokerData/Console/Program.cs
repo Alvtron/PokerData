@@ -9,6 +9,13 @@ namespace Console
     {
         static void Main(string[] args)
         {
+            var royalFlush = new Hand(
+                new Card { Suit = Suit.Spade, Rank = Rank.Ace },
+                new Card { Suit = Suit.Spade, Rank = Rank.Ten },
+                new Card { Suit = Suit.Spade, Rank = Rank.Queen },
+                new Card { Suit = Suit.Spade, Rank = Rank.King },
+                new Card { Suit = Suit.Spade, Rank = Rank.Jack });
+
             var straightFlush = new Hand(
                 new Card { Suit = Suit.Club, Rank = Rank.Jack },
                 new Card { Suit = Suit.Club, Rank = Rank.Nine },
@@ -77,14 +84,14 @@ namespace Console
 
             var stopwatch = Stopwatch.StartNew();
             System.Console.WriteLine($"Writing {2598960:0 000 000} ordered hands to file...");
-            Data.SaveOrderedPopulation(deck, "poker.ordered.csv", random);
+            Data.CreateCSV(deck, "poker.ordered.csv", Data.PopulationType.Ordered, random);
             stopwatch.Stop();
             System.Console.WriteLine($"Finished after {stopwatch.ElapsedMilliseconds / 1000.0:0.00} seconds.");
 
             System.Console.WriteLine($"Writing {311875200:000 000 000} unordered hands to file...");
             System.Console.WriteLine($"Estimated completion time is {stopwatch.ElapsedMilliseconds / 1000.0 / 60 * 120:0.00} minutes.");
             stopwatch.Restart();
-            Data.SaveUnorderedPopulation(deck, "poker.unordered.csv", random);
+            Data.CreateCSV(deck, "poker.unordered.csv", Data.PopulationType.All, random);
             stopwatch.Stop();
             System.Console.WriteLine($"Finished after {stopwatch.ElapsedMilliseconds / 1000.0:0.00} seconds ({stopwatch.ElapsedMilliseconds / 1000.0 / 60:0.00} minutes).");
         }

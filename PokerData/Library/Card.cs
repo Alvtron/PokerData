@@ -9,9 +9,9 @@ namespace Library
 
         public override string ToString() => $"{Rank} of {Suit}s";
 
-        public byte GetRank => Rank == Rank.Ace ? (byte)1: (byte)Rank;
+        public byte RankNumber => Rank == Rank.Ace ? (byte)1: (byte)Rank;
 
-        public byte GetSuit => (byte)Suit;
+        public byte SuitNumber => (byte)Suit;
 
         public bool PairsWith(Card card)
         {
