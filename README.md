@@ -1,2 +1,2 @@
 # PokerData
-Data set generator for ordered and unordered combinations of poker hands.
+Dataset generator for ordered and unordered combinations of poker hands.
